@@ -13,7 +13,7 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        return view('pizza.index');
+       return "list of pizzas";
     }
 
     /**
@@ -23,7 +23,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        //
+        return view("pizzafolder.create");
     }
 
     /**
