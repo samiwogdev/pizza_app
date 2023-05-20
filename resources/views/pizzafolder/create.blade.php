@@ -17,9 +17,15 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">{{ __('Pizza') }}</div>
-
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $errors)
+                               <p> {{ $errors }} </p>
+                            @endforeach
+                        </div>
+                    @endif
                     <div class="card-body">
-                        <form action="{{ route('pizza.store.RoutName') }}" method="post" enctype="multipart/form-data">@csrf
+                        <form action="{{ route('pizza.store') }}" method="post" enctype="multipart/form-data">@csrf
                             <div class="form-group">
                                 <label for="name">Name of pizzza</label>
                                 <input type="text" class="form-control" name="name" placeholder="name of pizza">
