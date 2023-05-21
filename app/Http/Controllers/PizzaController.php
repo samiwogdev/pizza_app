@@ -15,8 +15,8 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        $pizzas = Pizza::get();
-       return view('pizzafolder.index', compact('pizzas'));
+        $all_pizzas = Pizza::get();
+       return view('pizzafolder.index', compact('all_pizzas'));
     }
 
     /**
@@ -69,7 +69,8 @@ class PizzaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $single_pizza = Pizza::find($id);
+        return view('pizzafolder.edit', compact('single_pizza'));
     }
 
     /**

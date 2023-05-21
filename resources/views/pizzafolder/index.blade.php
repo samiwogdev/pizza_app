@@ -29,8 +29,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (count($pizzas) > 0)
-                            @foreach ($pizzas as $key => $pizza)
+                            @if (count($all_pizzas) > 0)
+                            @foreach ($all_pizzas as $key => $pizza)
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td><img src="{{ Storage::url($pizza->image) }}" width="80"></td>
