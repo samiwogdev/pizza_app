@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-
             <div class="col-md-8">
                 @if (count($errors) > 0)
                 <div class="card mt-5">
@@ -18,7 +17,7 @@
                 @endif
                 <div class="card">
                     <div class="card-header">Edit Pizza</div>
-                    <form action="{{ route('pizza.update',$single_pizza->id) }}" method="post" enctype="multipart/form-data">@csrf
+                    <form action="{{route('pizza.update',$single_pizza->id)}}" method="post" enctype="multipart/form-data">@csrf
                        @method('PUT')
                         <div class="card-body">
                             <div class="form-group">
