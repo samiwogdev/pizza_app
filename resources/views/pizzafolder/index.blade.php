@@ -91,6 +91,7 @@
                                 @endif
                             </tbody>
                         </table>
+                        {{ $all_pizzas->links() }}
                     </div>
                 </div>
             </div>
