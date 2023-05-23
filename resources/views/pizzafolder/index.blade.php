@@ -16,7 +16,11 @@
             </div>
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">{{ __('Pizza') }}</div>
+                    <div class="card-header">{{ __('All Pizza') }}
+                        <a href="{{ route('pizza.create') }}">
+                            <button class="btn btn-success" style="float: right">Add pizza</button>
+                        </a>
+                    </div>
 
                     <div class="card-body">
                         @if (session('message'))

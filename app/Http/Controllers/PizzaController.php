@@ -17,7 +17,7 @@ class PizzaController extends Controller
     public function index()
     {
         // $all_pizzas = Pizza::get();
-          $all_pizzas = Pizza::paginate(5);
+          $all_pizzas = Pizza::paginate(3);
        return view('pizzafolder.index', compact('all_pizzas'));
     }
 
