@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">{{ __('Menu') }}</div>
                     <div class="card-body">
@@ -13,18 +13,22 @@
                         </ul>
                     </div>
                 </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                            @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error )
+                            <p> {{ $error }} </p>
+                            @endforeach
+                            </div>
+                            @endif
+                    </div>
+                </div>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Pizza') }}</div>
                     <div class="card-body">
-                        @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                        @foreach ($errors->all() as $error )
-                        <p> {{ $error }} </p>
-                        @endforeach
-                        </div>
-                        @endif
                         <form action="{{ route('pizza.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
@@ -59,7 +63,7 @@
                                 <label>Image</label>
                                 <input type="file" name="image" class="form-control" name="image">
                             </div>
-                            <div class="form-group text-center">
+                            <div class="form-group text-center mt-4">
                                 <button class="btn btn-primary" type="submit">Save</button>
                             </div>
                         </form>
