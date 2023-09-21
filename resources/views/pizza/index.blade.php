@@ -23,6 +23,11 @@
                     </div>
 
                     <div class="card-body">
+                        @if (session('message'))
+                        <div class="alert alert-success">
+                            {{ __(session('message')) }}
+                        </div>
+                        @endif
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -50,10 +55,9 @@
                                             <td>{{ $pizza->small_pizza_price }}</td>
                                             <td>{{ $pizza->medium_pizza_price }}</td>
                                             <td>{{ $pizza->large_pizza_price }}</td>
-                                            <td><a href=""><button
-                                                        class="btn btn-primary">Edit</button></a></td>
+                                            <td><a href="{{ route('pizza.edit', $pizza->id) }}"><button class="btn btn-primary">Edit</button></a></td>
                                             <td><button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal{{ $pizza->id }}">Delete</button>
+                                             data-bs-target="#exampleModal{{ $pizza->id }}">Delete</button>
                                             </td>
                                             <!-- Modal -->
                                         </tr>
