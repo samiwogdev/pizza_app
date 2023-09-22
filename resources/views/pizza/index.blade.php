@@ -47,7 +47,7 @@
                                 @if (count($all_pizzas) > 0)
                                     @foreach ($all_pizzas as $key => $pizza)
                                         <tr>
-                                            <th scope="row">{{ $key + 1 }}</th>
+                                            <th scope="row">{{ __($key + 1 )}}</th>
                                             <td><img src="{{ Storage::url($pizza->image) }}" width="80"></td>
                                             <td>{{ $pizza->name }}</td>
                                             <td>{{ $pizza->description }}</td>
@@ -57,9 +57,35 @@
                                             <td>{{ $pizza->large_pizza_price }}</td>
                                             <td><a href="{{ route('pizza.edit', $pizza->id) }}"><button class="btn btn-primary">Edit</button></a></td>
                                             <td><button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                             data-bs-target="#exampleModal{{ $pizza->id }}">Delete</button>
+                                             data-bs-target="#deleteModal{{ $pizza->id }}">Delete</button>
                                             </td>
-                                            <!-- Modal -->
+                                            <!-- Delete Modal -->
+                                            <div class="modal fade" id="deleteModal{{ $pizza->id }}" tabindex="-1"
+                                                aria-labelledby="delete_modal" aria-hidden="true">
+                                                <form action="{{ route('pizza.destroy', $pizza->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="delete_modal">Delete
+                                                                    confirmation</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Are you sure ?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Delete</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </tr>
                                     @endforeach
                                 @else
@@ -67,6 +93,7 @@
                                 @endif
                             </tbody>
                         </table>
+                      {{ $all_pizzas->links() }}
                     </div>
                 </div>
             </div>

@@ -9,7 +9,8 @@ class PizzaController extends Controller
 {
   public function index()
 {
-    $all_pizzas = Pizza::get();
+    // $all_pizzas = Pizza::get();
+    $all_pizzas = Pizza::paginate(3);
     return view('pizza.index', compact('all_pizzas'));
 }
 
@@ -23,14 +24,13 @@ public function store(PizzaStoreRequest $request)
     Pizza::create([
         'name' => $request->name,
         'description' => $request->description,
-        'small_pizza_price' => $request->small_pizza_price,
-        'medium_pizza_price' => $request->medium_pizza_price,
-        'large_pizza_price' => $request->large_pizza_price,
+        'small_pizza_price'=> $request->small_pizza_price,
+        'medium_pizza_price'=> $request->medium_pizza_price,
+        'large_pizza_price'=> $request->large_pizza_price,
         'category' => $request->category,
-        'image' => $path
+        'image' => $path,
     ]);
-    $all_pizzas = Pizza::get();
-    return view('pizza.index', compact('all_pizzas'));
+    return redirect()->route('pizza.index')->with('message','Pizza added successfully!');
 }
 
 public function edit($id)
@@ -53,5 +53,11 @@ public function update(PizzaUpdateRequest $request, $id)
     $pizza->image = $path;
     $pizza->save();
     return redirect()->route('pizza.index')->with('message', 'Pizza Updated Succsessfully');
+}
+
+public function destroy($id)
+{
+Pizza::find($id)->delete();
+return redirect()->route('pizza.index')->with('message', 'Pizza deleted successfully');
 }
 }
