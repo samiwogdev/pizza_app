@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -10,6 +9,7 @@
                         <ul class="list-group">
                             <a href="{{ route('pizza.index') }}" class="list-group-item list-group-item-action">View</a>
                             <a href="{{ route('pizza.create') }}" class="list-group-item list-group-item-action">Create</a>
+                            <a href="{{ route('order.index') }}" class="list-group-item list-group-item-action">user order</a>
                         </ul>
                     </div>
                 </div>
@@ -21,7 +21,6 @@
                             <button class="btn btn-success" style="float: right">Add pizza</button>
                         </a>
                     </div>
-
                     <div class="card-body">
                         @if (session('message'))
                         <div class="alert alert-success">
