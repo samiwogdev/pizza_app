@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->string('date');
+            $table->string('time');
+            $table->integer('pizza_id');
+            $table->string('small_pizza')->default(0);
+            $table->string('medium_pizza')->default(0);
+            $table->string('large_pizza')->default(0);
+            $table->text('description');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }
