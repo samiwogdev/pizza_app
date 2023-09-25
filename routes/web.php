@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\UserOrderController;
@@ -17,11 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+
+Route::get('/', [FrontendController::class, 'index'])->name('frontpage');
+
 
 Route::group(["middleware" =>'auth', 'admin'], function(){
     Route::get('/home', [HomeController::class, 'index'])->name('home');
