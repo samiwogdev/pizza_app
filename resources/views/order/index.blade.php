@@ -25,7 +25,7 @@
                                     <th scope="col">M. pizza</th>
                                     <th scope="col">L. pizza</th>
                                     <th scope="col">Total($)</th>
-                                    <th scope="col">Message</th>
+                                    <th scope="col">Description</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Accept</th>
                                     <th scope="col">Reject</th>
@@ -33,32 +33,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <form action="" method="post">@csrf
-                                            <td>
-                                                <input name="status" type="submit" value="accepted"
-                                                    class="btn btn-primary btn-sm">
-                                            </td>
-                                            <td>
-                                                <input name="status" type="submit" value="rejected"
-                                                    class="btn btn-danger btn-sm">
-                                            </td>
-                                            <td>
-                                                <input name="status" type="submit" value="completed"
-                                                    class="btn btn-success btn-sm">
-                                            </td>
-                                        </form>
-                                    </tr>
+                                @foreach ($orders as $order)
+                                <tr>
+                                    <td>{{ $order->user->name }}</td>
+                                    <td>{{ $order->user->email }}</td>
+                                    <td>{{ $order->date }}/{{ $order->time }}</td>
+                                    <td>{{ $order->pizza->name }}</td>
+                                    <td>{{ $order->small_pizza }}</td>
+                                    <td>{{ $order->medium_pizza }}</td>
+                                    <td>{{ $order->large_pizza }}</td>
+                                    <td></td>
+                                    <td> {{ $order->description }}</td>
+                                    <td>{{ $order->status}} </td>
+                                    <form action="" method="post">@csrf
+                                        <td>
+                                            <input name="status" type="submit" value="accepted"
+                                                class="btn btn-primary btn-sm">
+                                        </td>
+                                        <td>
+                                            <input name="status" type="submit" value="rejected"
+                                                class="btn btn-danger btn-sm">
+                                        </td>
+                                        <td>
+                                            <input name="status" type="submit" value="completed"
+                                                class="btn btn-success btn-sm">
+                                        </td>
+                                    </form>
+                                </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
