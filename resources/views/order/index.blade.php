@@ -45,7 +45,7 @@
                                     <td></td>
                                     <td> {{ $order->description }}</td>
                                     <td>{{ $order->status}} </td>
-                                    <form action="" method="post">@csrf
+                                    <form action="{{ route('order.status', $order->id) }}" method="post">@csrf
                                         <td>
                                             <input name="status" type="submit" value="accepted"
                                                 class="btn btn-primary btn-sm">

@@ -31,6 +31,9 @@ Route::group(["middleware" =>'auth', 'admin'], function(){
     Route::get('/pizza/{id}/edit', [PizzaController::class, 'edit'])->name('pizza.edit');
     Route::put('pizza/{id}/update', [PizzaController::class, 'update'])->name('pizza.update');
     Route::delete('pizza/{id}/destroy', [PizzaController::class, 'destroy'])->name('pizza.destroy');
+
+    //user order
     Route::get('user/order', [UserOrderController::class, 'index'])->name('order.index');
+    Route::post('order/{id}/status', [UserOrderController::class, 'changeOrderStatus'])->name('order.status');
 });
 
