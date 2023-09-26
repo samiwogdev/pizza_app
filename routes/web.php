@@ -20,11 +20,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [FrontendController::class, 'index'])->name('frontpage');
+Route::get('pizza/{id}', [FrontendController::class, 'show'])->name('show');
 
 
 Route::group(["middleware" =>'auth', 'admin'], function(){
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/pizza', [PizzaController::class, 'index'])->name('pizza.index');
     Route::get('/create', [PizzaController::class, 'create'])->name('pizza.create');
     Route::post('/pizza/store', [PizzaController::class, 'store'])->name('pizza.store');
