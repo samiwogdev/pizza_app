@@ -41,7 +41,7 @@
                                     <img src="{{ Storage::url($pizza->image) }}" class="img-thumbnail" style="width: 100%;">
                                     <p>{{ $pizza->name }}</p>
                                     <p>{{ $pizza->description }}</p>
-                                    <a href="{{ route('show', $pizza->id) }}">
+                                    <a href="{{ route('pizza.show', $pizza->id) }}">
                                         <button class="btn btn-danger mb-1">Order Now</button>
                                     </a>
                                 </div>

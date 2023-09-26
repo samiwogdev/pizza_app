@@ -22,7 +22,8 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [FrontendController::class, 'index'])->name('frontpage');
-Route::get('pizza/{id}', [FrontendController::class, 'show'])->name('show');
+Route::get('pizza/{id}', [FrontendController::class, 'show'])->name('pizza.show');
+Route::post('pizza/order', [UserOrderController::class, 'store'])->name('order.store');
 
 
 Route::group(["middleware" =>'auth', 'admin'], function(){

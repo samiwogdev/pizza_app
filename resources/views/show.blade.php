@@ -9,7 +9,7 @@
 
                     <div class="card-body">
                         @if (Auth::check())
-                            <form action="" method="post">@csrf
+                            <form action="{{ route('order.store') }}" method="post">@csrf
                                 <div class="form-group ">
                                     <p>Name:{{ auth()->user()->name }}</p>
                                     <p>Email:{{ auth()->user()->email }}</p>
@@ -23,22 +23,22 @@
                                     <p><input type="hidden" name="pizza_id" value="{{ $pizza->id }}"></p>
                                     <p>Date:<input type="date" name="date" class="form-control" required></p>
                                     <p>Time:<input type="time" name="time" class="form-control" required></p>
-                                    <p>Message:<textarea class="form-control" name="body" required></textarea></p>
+                                    <p>Message:<textarea class="form-control" name="desc" required></textarea></p>
 
                                     <p class="text-center">
 
                                         <button class="btn btn-danger" type="submit">Make order</button>
                                     </p>
-                                    {{-- @if (session('message'))
+                                    @if (session('message'))
                                         <div class="alert alert-success" role="alert">
                                             {{ session('message') }}
                                         </div>
                                     @endif
-                                    @if (session('errmessage'))
+                                    @if (session('errMessage'))
                                     <div class="alert alert-danger" role="alert">
-                                        {{ session('errmessage') }}
+                                        {{ session('errMessage') }}
                                     </div>
-                                @endif --}}
+                                @endif
 
                                 </div>
                             </form>
