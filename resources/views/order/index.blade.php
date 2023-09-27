@@ -10,8 +10,8 @@
                 </nav> --}}
                 <div class="card ">
                     <div class="card-header">Orders
-                        <a style="float:right;" href=""><button class="bnt btn-secondary btn-sm" style="margin-left: 5px;">View Pizza</button></a>
-                        <a style="float:right;" href=""><button class="bnt btn-secondary btn-sm">Add new Pizza</button></a>
+                        <a style="float:right;" href="{{ route('pizza.index') }}"><button class="bnt btn-secondary btn-sm" style="margin-left: 5px;">View Pizza</button></a>
+                        <a style="float:right;" href="{{ route('pizza.create') }}"><button class="bnt btn-secondary btn-sm">Add new Pizza</button></a>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered">

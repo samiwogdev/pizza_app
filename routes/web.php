@@ -26,7 +26,7 @@ Route::get('pizza/{id}', [FrontendController::class, 'show'])->name('pizza.show'
 Route::post('pizza/order', [UserOrderController::class, 'store'])->name('order.store');
 
 
-Route::group(["middleware" =>'auth', 'admin'], function(){
+Route::group( [ 'prefix' => 'admin', "middleware" =>['auth', 'admin'] ], function(){
     Route::get('/pizza', [PizzaController::class, 'index'])->name('pizza.index');
     Route::get('/create', [PizzaController::class, 'create'])->name('pizza.create');
     Route::post('/pizza/store', [PizzaController::class, 'store'])->name('pizza.store');
