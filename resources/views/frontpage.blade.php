@@ -22,7 +22,7 @@
                             <input type="submit" value="Spicy pepperoni" name="category" class="list-group-item list-group-item-action">
                             <input type="submit" value="Vegi pepperoni" name="category" class="list-group-item list-group-item-action">
                         </form>
-
+                        <div class="text-center">{{ __(count($pizzas)) }}</div>
 
                     </div>
 
